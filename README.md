@@ -1,8 +1,24 @@
 # my-little-asm
 
-`mla` is a custom Assembly-like language.
+`mla` is my custom Assembly-like language, implemented from
+scratch in C++. It has an `assembler` and `simulator`.
 
-This package contains it's `assembler` and `simulator`.
+![mla](http://alexdantas.net/projects/images/my-little-asm.png)
+
+This is an example on how Assembly languages work - a set of
+human-readable instructions that are translated into machine
+code. Normally the language would be designed for some hardware
+to execute, but in our case we simulate it step by step.
+
+With our basic instruction set we can potentially write any
+existing program out there - also called [Turing-completeness](http://en.wikipedia.org/wiki/Turing_completeness).
+
+Long history short, we have a parser that reads each instruction
+on the text file and converts them into integers - indexing
+all 14 possible instructions.
+
+The output file is then fed into the simulator,
+that actually implements those instructions.
 
 ## Usage
 
@@ -10,8 +26,7 @@ First, make sure to compile everything by doing:
 
     make
 
-Then, write any program according to the *language definition*
-below - saving with the `.s` extension. Then:
+Then, write any program according to the [language definition](#language-definition) below - saving with the `.s` extension. Then:
 
     $ ./assembler file.s file.o
     $ ./simulator file.o
@@ -20,7 +35,7 @@ See sample programs under the `examples` folder.
 
 ## Sample code
 
-```assembly
+```asm
 SECTION TEXT
 LABEL:   INPUT  N1
          COPY   N1,    N2     ; comment
@@ -37,13 +52,13 @@ N2: CONST  -0x10    ; Look ma, hex constant!
 
 ## Language definition
 
-`mla` follows an Assembly-like syntax.
+`mla` follows a MIPS Assembly-like syntax.
 
 Highlights:
 
 * 14 instructions.
-* `;` starts comment, until the end of line.
-* Labels for referencing memory addresses.
+* `;` starts comment until the end of line.
+* Labels references memory addresses.
 * Accumulator register (`ACC`) implied on arithmetic instructions.
 
 Code is divided in two sections:
@@ -70,8 +85,10 @@ Code is divided in two sections:
 | Output Memory       | `OUTPUT`     | `STDOUT <- MEM[OP]` |
 | Stop Execution      | `STOP`       | `stops program` |
 
-Note: `MEM[OP]` means memory address specified by operand and `PC`
-      is the program counter (current instruction address).
+Note:
+
+* `MEM[OP]` means memory address specified by operand and `PC`
+  is the program counter (current instruction address).
 
 ## Directives
 
@@ -83,8 +100,13 @@ Note: `MEM[OP]` means memory address specified by operand and `PC`
 | `SPACE N`       | Saves an empty array in memory of size `N`. |
 | `CONST X`       | Saves a constant of value `X` in memory. |
 
-## Author
+## Contact
 
-Hello, there!
-I'm Alexandre Dantas and `mla` was made as an assignment for a Basic Software class.
+Hello, there! I'm Alexandre Dantas and I programmed this lovely
+thing over two weeks. Don't take this project too seriously,
+`mla` was made as an assignment for a _System Software_ class
+on my Computer Science .
+
+* Website: http://alexdantas.net/
+* Email: <eu@alexdantas.net>
 
