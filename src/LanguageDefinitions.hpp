@@ -28,5 +28,30 @@
 
 #define MAXIMUM_LABEL_SIZE 1001
 
+// I need this duplicate information because of Translator.cpp
+// and InstructionTable.cpp.
+//
+// TODO: Make a way to remove this enum in favor of previous
+//       #defines!
+
+// instructions OPCODE
+enum Opcodes
+{
+	OPCODE_ADD = 1,
+	OPCODE_SUB,
+	OPCODE_MULT,
+	OPCODE_DIV,
+	OPCODE_JMP,
+	OPCODE_JMPN,
+	OPCODE_JMPP,
+	OPCODE_JMPZ,
+	OPCODE_COPY,
+	OPCODE_LOAD,
+	OPCODE_STORE,
+	OPCODE_INPUT,
+	OPCODE_OUTPUT,
+	OPCODE_STOP
+};
+
 #endif // LANG_DEFINITIONS_H_DEFINED
 

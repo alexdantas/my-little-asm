@@ -1,7 +1,8 @@
 #include <sstream>              // stringstream
 #include <cstdlib>              // strtol()
-#include "utils.hpp"
 #include <iostream>
+
+#include "Utils.hpp"
 
 std::string intToString(int num)
 {
@@ -36,5 +37,18 @@ int stringToInt(std::string str)
 
     // Decimal constants
     return atoi(str.c_str());
+}
+
+std::string basename(std::string filename)
+{
+	size_t pos = filename.rfind(".");
+
+	if (pos == std::string::npos) // didn't find
+		return "";
+
+	if (pos == 0) // . is at the front - dotfile
+		return "";
+
+	return filename.substr(0, pos);
 }
 

@@ -1,11 +1,12 @@
 #include <iostream>
 #include <cstdlib> // atoi()
 #include <ctype.h> // isdigit()
-#include "SintacticalAnalyser.hpp"
-#include "Assembler.hpp"
-#include "InstructionTable.cpp"
-#include "Log.hpp"
-#include "utils.hpp"
+
+#include <Assembler/SintacticalAnalyser.hpp>
+#include <Assembler/Assembler.hpp>
+#include <InstructionTable.cpp>
+#include <Misc/Log.hpp>
+#include <Misc/Utils.hpp>
 
 // I KNOW global variables suck, but I couldn't figure out
 // a clean way of doing what I did.

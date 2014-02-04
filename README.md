@@ -1,7 +1,9 @@
 # my-little-asm
 
 `mla` is my custom Assembly-like language, implemented from
-scratch in C++. It has an `assembler` and `simulator`.
+scratch in C++. It has an `assembler` (to create machine code),
+`simulator` (to execute/test it) and `translator` (to convert
+to **x86**/**IA-32** assembly).
 
 ![mla](http://alexdantas.net/projects/images/my-little-asm.png)
 
@@ -13,25 +15,37 @@ to execute, but in our case we simulate it step by step.
 With our basic instruction set we can potentially write any
 existing program out there - also called [Turing-completeness](http://en.wikipedia.org/wiki/Turing_completeness).
 
-Long history short, we have a parser that reads each instruction
-on the text file and converts them into integers - indexing
-all 14 possible instructions.
+We have a parser that reads each instruction on the text file
+and converts them into integers - indexing all 14 possible
+instructions.
 
 The output file is then fed into the simulator,
 that actually implements those instructions.
+
+Finally, you can convert the resulting machine code into actual
+**x86**/**IA-32** code. Then, use `nasm` and `ld` to create a
+standalone executable!
 
 ## Usage
 
 First, make sure to compile everything by doing:
 
-    make
+    $ make
 
-Then, write any program according to the [language definition](#language-definition) below - saving with the `.s` extension. Then:
+Then, write any program according to the [language definition](#language-definition) below - saving with the `.asm` extension. See sample programs under the `examples/` folder.
 
-    $ ./assembler file.s file.o
-    $ ./simulator file.o
+Then:
 
-See sample programs under the `examples` folder.
+    $ ./assembler file.asm file.o     # assemble file.asm to file.o
+    $ ./simulator file.o              # execute file.o
+	$ ./translator file.o             # converts file.o to file.s
+
+`file.s` is a working **x86** Assembly code file.
+You can create a standalone executable of it with `nasm` and `ld`:
+
+    $ nasm file.s -o file.obj -f elf -F stabs
+	$ ld file.obj -o file
+	$ ./file
 
 ## Sample code
 
@@ -60,6 +74,7 @@ Highlights:
 * `;` starts comment until the end of line.
 * Labels references memory addresses.
 * Accumulator register (`ACC`) implied on arithmetic instructions.
+* Files with `.asm` extension.
 
 Code is divided in two sections:
 

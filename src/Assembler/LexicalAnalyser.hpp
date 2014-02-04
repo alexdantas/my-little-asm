@@ -3,7 +3,8 @@
 
 #include <string>
 #include <sstream>
-#include "LanguageDefinitions.hpp"
+
+#include <LanguageDefinitions.hpp>
 
 /// Handles raw file data and retrieval of tokens.
 ///

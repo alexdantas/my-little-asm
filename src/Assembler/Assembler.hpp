@@ -2,9 +2,10 @@
 #define ASSEMBLER_H_DEFINED
 
 #include <string>
-#include "SintacticalAnalyser.hpp"
-#include "SymbolTable.hpp"
-#include "DerivationTable.hpp"
+
+#include <Assembler/SintacticalAnalyser.hpp>
+#include <Assembler/SymbolTable.hpp>
+#include <Assembler/DerivationTable.hpp>
 
 struct AssemblerException
 {

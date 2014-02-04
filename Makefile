@@ -1,32 +1,27 @@
 # my-little-asm minimal Makefile
 #
-# Basic Software (2/2013) Assignment
-# Alexandre Dantas (10/0090788)
+# System Software Assignment (Universidade de Brasilia 2/2013)
 
-CFLAGS  = -Wall -Wextra -g
+CFLAGS  = -Wall -Wextra -g -I"src/"
 LDFLAGS =
 
 # All source files
-ASSEMBLER_FILES = src/Assembler.cpp           \
-                  src/LexicalAnalyser.cpp     \
-                  src/SintacticalAnalyser.cpp \
-                  src/assembler_main.cpp      \
-                  src/SymbolTable.cpp         \
-                  src/DerivationTable.cpp     \
-                  src/Log.cpp                 \
-                  src/utils.cpp
+ASSEMBLER_FILES  = $(shell find src/Assembler/ -type f -iname '*.cpp')
+SIMULATOR_FILES  = $(shell find src/Simulator/ -type f -iname '*.cpp')
+TRANSLATOR_FILES = $(shell find src/Translator/ -type f -iname '*.cpp')
+MISC_FILES       = $(shell find src/Misc -maxdepth 1 -type f -iname '*.cpp')
 
-SIMULATOR_FILES = src/Simulator.cpp           \
-                  src/InstructionTable.cpp
+all: assembler simulator translator
 
-all: assembler simulator
+assembler:
+	g++ $(CFLAGS) $(ASSEMBLER_FILES) $(MISC_FILES) -o assembler
 
-assembler: $(ASSEMBLER_FILES)
-	g++ $(CFLAGS) $(ASSEMBLER_FILES) -o assembler
+simulator:
+	g++ $(CFLAGS) $(SIMULATOR_FILES) $(MISC_FILES) -o simulator
 
-simulator: $(SIMULATOR_FILES)
-	g++ $(CFLAGS) $< -o simulator
+translator:
+	g++ $(CFLAGS) $(TRANSLATOR_FILES) $(MISC_FILES) -o translator
 
 clean:
-	rm -f assembler simulator
+	rm -f assembler simulator translator
 

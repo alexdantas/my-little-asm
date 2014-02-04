@@ -1,4 +1,4 @@
-#include "SymbolTable.hpp"
+#include <Assembler/SymbolTable.hpp>
 
 Symbol::Symbol(std::string label, int16_t memory_position, MemoryType memory_type, DataType data_type):
     label(label),

@@ -1,7 +1,8 @@
-#include "LexicalAnalyser.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
+
+#include <Assembler/LexicalAnalyser.hpp>
 
 LexicalAnalyser::LexicalAnalyser(std::string filename):
     line_count(0),

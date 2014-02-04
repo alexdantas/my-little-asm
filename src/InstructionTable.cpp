@@ -6,26 +6,10 @@
 #include <vector>
 #include <cstring>
 
-// All possible instructions
-enum Opcodes
-{
-    OPCODE_ADD = 1,
-    OPCODE_SUB,
-    OPCODE_MULT,
-    OPCODE_DIV,
-    OPCODE_JMP,
-    OPCODE_JMPN,
-    OPCODE_JMPP,
-    OPCODE_JMPZ,
-    OPCODE_COPY,
-    OPCODE_LOAD,
-    OPCODE_STORE,
-    OPCODE_INPUT,
-    OPCODE_OUTPUT,
-    OPCODE_STOP,
-    OPCODE_ISA
-};
+#include <LanguageDefinitions.hpp>
 
+// Surprise instruction
+#define OPCODE_ISA 15
 
 /// A single instruction, baby
 struct Instruction

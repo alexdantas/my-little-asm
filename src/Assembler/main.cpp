@@ -1,15 +1,13 @@
-// 1o trabalho de Software Basico, 2/2013
-// Alexandre Dantas (10/0090788)
-//
-//
+// 1st System Software assignment (Universidade de Brasilia 2/2013)
 
 #include <iostream>
 #include <cstdlib>              // exit()
 #include <inttypes.h>           // int16_t
-#include <cstring>
-#include "Assembler.hpp"
-#include "Log.hpp"
-#include "utils.hpp"
+#include <cstring>				// strcmp()
+
+#include <Assembler/Assembler.hpp>
+#include <Misc/Log.hpp>
+#include <Misc/Utils.hpp>
 
 // exit return value errors
 #define ERROR_INVALID_ARGUMENTS   666

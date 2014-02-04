@@ -1,9 +1,9 @@
 #ifndef SINTACTICALANALYSER_H_DEFINED
 #define SINTACTICALANALYSER_H_DEFINED
 
-#include "LexicalAnalyser.hpp"
-#include "SymbolTable.hpp"
-#include "DerivationTable.hpp"
+#include <Assembler/LexicalAnalyser.hpp>
+#include <Assembler/SymbolTable.hpp>
+#include <Assembler/DerivationTable.hpp>
 
 ///
 class SintacticalAnalyser

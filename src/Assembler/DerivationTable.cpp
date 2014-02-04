@@ -1,6 +1,7 @@
 #include <fstream>
-#include "DerivationTable.hpp"
-#include "Log.hpp"
+
+#include <Assembler/DerivationTable.hpp>
+#include <Misc/Log.hpp>
 
 DerivationTable::DerivationTable(int size):
     current_index(0)

@@ -1,6 +1,7 @@
-#include "Assembler.hpp"
 #include <iostream>
-#include "Log.hpp"
+
+#include <Assembler/Assembler.hpp>
+#include <Misc/Log.hpp>
 
 Assembler::Assembler(SintacticalAnalyser* syntax, std::string filename):
     syntax(syntax),
